@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
-import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
-    fullName: '',
-    workEmail: '',
-    whatsapp: '',
-    businessName: '',
-    minutesPerMonth: '',
-    aiPlan: '',
-    message: ''
+    fullName: "",
+    workEmail: "",
+    whatsapp: "",
+    businessName: "",
+    minutesPerMonth: "",
+    aiPlan: "",
+    message: "",
   });
 
   const handleSubmit = async (e) => {
@@ -33,32 +33,32 @@ const ContactForm = () => {
     };
 
     try {
-      await emailjs.send(
-        'service_30xrgdf',      // Replace with your Service ID
-        'template_2xff1cc',     // Replace with your Template ID
-        templateParams,
-        'W1iI3pzdYo46y-_Qm'     // Replace with your Public Key
-      );
+      // await emailjs.send(
+      //   'service_30xrgdf',      // Replace with your Service ID
+      //   'template_2xff1cc',     // Replace with your Template ID
+      //   templateParams,
+      //   'W1iI3pzdYo46y-_Qm'     // Replace with your Public Key
+      // );
 
-      toast.success('Message sent successfully!', {
-        position: 'top-center',
+      toast.success("Message sent successfully!", {
+        position: "top-center",
         autoClose: 3000,
       });
 
       setFormData({
-        fullName: '',
-        workEmail: '',
-        whatsapp: '',
-        businessName: '',
-        minutesPerMonth: '',
-        aiPlan: '',
-        message: ''
+        fullName: "",
+        workEmail: "",
+        whatsapp: "",
+        businessName: "",
+        minutesPerMonth: "",
+        aiPlan: "",
+        message: "",
       });
 
-      setTimeout(() => navigate('/'), 3000);
+      setTimeout(() => navigate("/"), 3000);
     } catch (error) {
-      toast.error('Failed to send message. Please try again.', {
-        position: 'top-center',
+      toast.error("Failed to send message. Please try again.", {
+        position: "top-center",
         autoClose: 5000,
       });
     } finally {
@@ -70,7 +70,7 @@ const ContactForm = () => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -78,8 +78,12 @@ const ContactForm = () => {
     <div className="bg-[#0a1f44] min-h-screen text-gray-300 py-16">
       <ToastContainer />
       <div className="max-w-3xl mx-auto px-4">
-        <h1 className="text-white text-5xl font-bold text-center mb-4">Contact Us</h1>
-        <p className="text-gray-400 text-center mb-12">We'd love to hear from you. Please fill out this form.</p>
+        <h1 className="text-white text-5xl font-bold text-center mb-4">
+          Contact Us
+        </h1>
+        <p className="text-gray-400 text-center mb-12">
+          We'd love to hear from you. Please fill out this form.
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -150,10 +154,12 @@ const ContactForm = () => {
             type="submit"
             disabled={isSubmitting}
             className={`w-full bg-red-600 text-white py-4 rounded-lg font-medium ${
-              isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-red-700'
+              isSubmitting
+                ? "opacity-70 cursor-not-allowed"
+                : "hover:bg-red-700"
             }`}
           >
-            {isSubmitting ? 'Sending...' : 'Submit'}
+            {isSubmitting ? "Sending..." : "Submit"}
           </button>
         </form>
       </div>
