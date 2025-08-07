@@ -1,0 +1,12 @@
+/* Import Inter font first */
+@import "@fontsource/inter/index.css";
+
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply the Inter font globally */
+body {
+  @apply font-sans;
+}
